@@ -28,10 +28,8 @@ class Cashier:
 
         Params: item,jumlah, dan harga.
         '''
-        list = []
         while True:
-            # add = input("Apakah Anda ingin menambahkan item ke dalam list belanja? (ya/tidak)")
-            if len(list) != 0:
+            if len(self.items) != 0:
                 add = input("Apakah Anda ingin menambahkan item ke dalam list belanja lagi? (ya/tidak)")
             else:
                 add = "ya"
@@ -39,16 +37,18 @@ class Cashier:
             if add.lower() == 'tidak':
                 break
             elif add.lower() == "ya":
-                name = input("Masukkan barang belanja Anda: ")
-                qty = int(input("Masukkan jumlah item: "))
-                price = float(input("Masukkan harga item: Rp "))
-                added_item = [name, qty, price]
-                list.append(added_item)
-                print(f"{name} dengan jumlah {qty} dan harga per item Rp {price} berhasil ditambahkan ke keranjang")
+                try:
+                    name = input("Masukkan barang belanja Anda: ")
+                    qty = int(input("Masukkan jumlah item: "))
+                    price = float(input("Masukkan harga item: Rp "))
+                    added_item = [name, qty, price]
+                    self.items.append(added_item)
+                    print(f"{name} dengan jumlah {qty} dan harga per item Rp {price} berhasil ditambahkan ke keranjang")
+                except:
+                    print("Input yang Anda masukkan tidak sesuai")
             else:
                 print("Jawaban tidak sesuai, Anda harus memilih ya / tidak")
 
-        self.items = list
         self.show_current_item()
     
     def show_current_item(self):

@@ -26,13 +26,19 @@ while True:
             new_name = input('Masukkan nama item yang baru: ')
             cashier.edit_name(existing_name,new_name)
         elif menu == 2:
-            item_name = input('Masukkan nama item yang ingin diubah jumlahnya: ')
-            new_qty = int(input('Masukkan jumlah item yang baru: '))
-            cashier.edit_qty(item_name, new_qty)
+            try: 
+                item_name = input('Masukkan nama item yang ingin diubah jumlahnya: ')
+                new_qty = int(input('Masukkan jumlah item yang baru: '))
+                cashier.edit_qty(item_name, new_qty)
+            except:
+                print("Input yang Anda masukkan tidak sesuai")
         elif menu == 3:
-            item_name = input('Masukkan nama item yang ingin diubah harganya: ')
-            new_price = float(input('Masukkan harga item yang baru: Rp '))
-            cashier.edit_price(item_name, new_price)
+            try: 
+                item_name = input('Masukkan nama item yang ingin diubah harganya: ')
+                new_price = float(input('Masukkan harga item yang baru: Rp '))
+                cashier.edit_price(item_name, new_price)
+            except:
+                print("Input yang Anda masukkan tidak sesuai")
         elif menu == 4:
             item_name = input('Masukkan nama item yang ingin dihapus: ')
             cashier.remove_item(item_name)
@@ -40,6 +46,7 @@ while True:
             cashier.cancel_transaction()
             cancel_transaction = True
             break
+    print("Input yang Anda masukkan salah")    
 
     selesai = input('Apakah Anda ingin menyelesaikan transaksi Anda? (ya/tidak)')
     if selesai.lower() == "ya":
